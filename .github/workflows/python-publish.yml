@@ -20,11 +20,11 @@ jobs:
     steps:
     # 输出IP
     - name: IP
-      run: sudo curl ifconfig.me >>$GITHUB_OUTPUT
+      run: sudo curl ifconfig.me
       
     # 设置服务器时区为东八区 
     - name: Set time zone
-      run: sudo timedatectl set-timezone 'Asia/Shanghai' >>$GITHUB_OUTPUT
+      run: sudo timedatectl set-timezone 'Asia/Shanghai'
       
     # 检出
     - name: Checkout
@@ -38,15 +38,15 @@ jobs:
         python-version: '3.x'
     - name: Install dependencies
       run: |
-        sudo apt-get update >>$GITHUB_OUTPUT
-        sudo apt-get install -y google-chrome-stable >>$GITHUB_OUTPUT
-        sudo pip install pyvirtualdisplay  >>$GITHUB_OUTPUT
-        python -m pip install --upgrade pip >>$GITHUB_OUTPUT
-        pip install setuptools wheel twine >>$GITHUB_OUTPUT
-        pip install selenium >>$GITHUB_OUTPUT
-        whereis  chromedriver >>$GITHUB_OUTPUT
-        cd /home/runner/work/Neworld_SignIn/Neworld_SignIn/driver >>$GITHUB_OUTPUT
-        sudo chmod +x chromedriver >>$GITHUB_OUTPUT
+        sudo apt-get update
+        sudo apt-get install -y google-chrome-stable
+        sudo pip install pyvirtualdisplay 
+        python -m pip install --upgrade pip
+        pip install setuptools wheel twine 
+        pip install selenium 
+        whereis  chromedriver 
+        cd /home/runner/work/Neworld_SignIn/Neworld_SignIn/driver
+        sudo chmod +x chromedriver 
     - name: Build and publish
       env:
          USERNAME: ${{ secrets.USERNAME }}
